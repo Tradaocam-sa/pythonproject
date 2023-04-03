@@ -101,16 +101,11 @@ class rightBackground(ttk.Frame):
         title.pack(expand=True, fill= 'both', padx = 0, pady= 0) 
         frame1.place(relx=0.15, y=0, relwidth= 1, relheight= 0.05)
         
-    def display_course_list(self):
-        # hide the input buttons if they are visible
-        self.add_std_btn.place_forget()
-        self.add_crs_btn.place_forget()
-        self.add_mark_btn.place_forget()
-
-        # display the course list label
-        self.display_label.config(text="This is the course list")
-        self.display_label.place(x=500, y=300)
-
+   
+class widgets(ttk.TK_WIDGETS):
+    def __init__(self):
+         super().__init__()
+         self.
         
 
 Management('Transcript', '1540x700+0+0',(1540,700))

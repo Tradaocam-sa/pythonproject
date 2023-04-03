@@ -24,9 +24,10 @@ connection.execute(" CREATE TABLE IF NOT EXISTS " + TBL_NAME + " ( " + ID +
                    + GENDER + " TEXT); ")
 
                    
-appLabel = ttk.Label(root, text = "Transcript information of student", foreground="#568DE5", width= 40)
+appLabel = ttk.Label(root, text = "Transcript information of student", foreground="#568DE5", width= 35)
 appLabel.config(font=("Inria Sans Bold Italic",30) )
-appLabel.grid(row= 0, columnspan=2, padx= (10,10), pady = (30,0))
+appLabel.grid(row= 0, column = 0,columnspan=2, padx= (10,10), pady = (30,0))
+
 
 class Student:
     studentName = ""
@@ -121,7 +122,25 @@ def hideWindow():
     tree.pack()
     secondWindow.mainloop()
     
+def delete():
+    root.destroy()
+    deleteWindow = tk.Tk()
+    deleteWindow.geometry('600x600')
 
+    deleteWindow.title("Delete information")
+
+    delLabel = ttk.Label(deleteWindow, text= "Choose student to delete", foreground='#568DE5', width= 40)
+    delLabel.config(font=("Inria Sans Bold Italic",30))
+    delLabel.grid(row= 0, columnspan=2, padx=(10,10), pady=(30,0))
+    
+    idDelete = ttk.Label(deleteWindow, text = "Student ID")
+
+    idDelete.grid(row=1, column=0, pady=10)
+
+    idDelEntry = ttk.Entry(deleteWindow, width=30)
+    idDelEntry.grid(row= 1, column= 1, pady= 10)
+    
+    deleteWindow.mainloop()
 # def deleteInfo():
 #     root.destroy
 
@@ -133,6 +152,9 @@ button.grid(row= 6, column= 0, pady=30)
 
 displayButton = ttk.Button(root, text= "Show list", command=lambda:  hideWindow())
 displayButton.grid(row=6, column=1)
+
+deleteButton = ttk.Button(root, text = "Delete", command= lambda: delete() )
+deleteButton.grid(row= 7, column= 0, pady= 10)
 
 
 
