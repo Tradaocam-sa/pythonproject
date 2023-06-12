@@ -1,6 +1,11 @@
 from Students import Student
 from Courses import Course
+import fileinput
 
+
+course_data = open('courses.txt', 'w')
+student_data = open('students.txt', 'w')
+mark_data = open('mark.txt', 'w')
 
 student_list = []
 course_list = []
@@ -44,6 +49,10 @@ while True:
             student = Student(id, name, dob, email, phoneNumber, birth)
             student.standardizing()
             student_list.append(student)
+            
+            student_data.write(student.get_student())
+            
+          
         
         
                     
@@ -103,6 +112,11 @@ while True:
             course = Course(course_id, course_name)
             course_list.append(course)
             
+            course_data.write(course.get_course())
+            
+            
+            
+            
         elif select == 14:
             for i in course_list:
                 print(i.get_course())
@@ -130,6 +144,7 @@ while True:
                     for j in student_list:
                         if j.get_id() == id:
                             i.set_midTerm(input("Mid-term mark: "), j.get_id())
+
                         
         elif select == 10:
             course_id = input("Enter ID of course you want add final grade for student: ")
@@ -177,6 +192,13 @@ while True:
                         if j.get_id() == id:
                             print(f'Student ID: {j.get_id()}, Student Name: {j.get_name()}, Attendance in {i.get_course_name()}: {i.get_attendance(j.get_id())}, Mid-term: {i.get_midTerm(j.get_id())}, Final: {i.get_final(j.get_id())}') 
                             
+                            mark_data.write(f'Student ID: {j.get_id()}, Student Name: {j.get_name()}, Attendance in {i.get_course_name()}: {i.get_attendance(j.get_id())}, Mid-term: {i.get_midTerm(j.get_id())}, Final: {i.get_final(j.get_id())}')
+                            
+                            
         
     else:
         print("\n You have to input a number !!!")
+
+   
+ 
+  
